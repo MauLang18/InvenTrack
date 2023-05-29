@@ -1,0 +1,542 @@
+﻿<UserControl x:Class="InvenTrack.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view="clr-namespace:InvenTrack.View"
+             xmlns:viewModel="clr-namespace:InvenTrack.ViewModel"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="ComboBox">
+            <Setter Property="Background"
+                    Value="Transparent" />
+            <Setter Property="Foreground"
+                    Value="Black" />
+            <Setter Property="FontWeight"
+                    Value="Medium" />
+            <Setter Property="FontSize"
+                    Value="15" />
+        </Style>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="55.5" />
+                <RowDefinition Height="55.5" />
+                <RowDefinition Height="55.5" />
+                <RowDefinition Height="55.5" />
+                <RowDefinition Height="45" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0">
+                <TextBlock Text="ID SISTEMA"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtIdSistema"
+                         Text="{Binding IdSistema, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="1">
+                <TextBlock Text="TIPO EQUIPO"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtTipoEquipo"
+                         Text="{Binding TipoEquipo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0"
+                        Grid.Column="2">
+                <TextBlock Text="MARCA"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtMarca"
+                         Text="{Binding Marca, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="0">
+                <TextBlock Text="SERIE"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtSerie"
+                         Text="{Binding Serie, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1">
+                <TextBlock Text="MODELO"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtModelo"
+                         Text="{Binding Modelo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Grid.Column="2">
+                <TextBlock Text="ESTADO"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <ComboBox x:Name="txtEstado"
+                          ItemsSource="{Binding Estados}"
+                          SelectedItem="{Binding SelectedEstado}"
+                          DisplayMemberPath="Nombre"
+                          FontSize="13"
+                          FontWeight="Medium"
+                          FontFamily="Montserrat"
+                          Foreground="Black"
+                          BorderBrush="DarkGray"
+                          BorderThickness="0,0,0,1"
+                          Height="28"
+                          VerticalContentAlignment="Center"
+                          Margin="0,10,0,0"
+                          Padding="20,0,0,0" />
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="0">
+                <TextBlock Text="ACTIVO"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtActivo"
+                         Text="{Binding Activo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2">
+                <TextBlock Text="DETALLES"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtDetalles"
+                         Text="{Binding Detalles, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Margin="0,10,0,0"
+                         Padding="20,0,0,0">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/write.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="3"
+                        Grid.Column="2">
+                <Button x:Name="btnEliminar"
+                        Command="{Binding EliminarEquipoCommand}"
+                        BorderThickness="0"
+                        Content="ELIMINAR"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Margin="0,5,0,0"
+                        Visibility="{Binding IsVisibleEliminar, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background"
+                                    Value="#462ad8" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#28aeed" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150"
+                                    Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="3"
+                        Grid.Column="2">
+                <Button x:Name="btnEditar"
+                        Command="{Binding ModificarEquipoCommand}"
+                        BorderThickness="0"
+                        Content="EDITAR"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Margin="0,5,0,0"
+                        Visibility="{Binding IsVisibleEditar, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background"
+                                    Value="#462ad8" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#28aeed" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150"
+                                    Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="3"
+                        Grid.Column="2">
+                <Button x:Name="btnGuardar"
+                        Command="{Binding AgregarEquipoCommand}"
+                        BorderThickness="0"
+                        Content="GUARDAR"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Margin="0,5,0,0"
+                        Visibility="{Binding IsVisibleGuardar, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background"
+                                    Value="#462ad8" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#28aeed" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150"
+                                    Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="4"
+                        Grid.ColumnSpan="2">
+                <TextBlock Text="BUSCAR"
+                           Foreground="DarkGray"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat" />
+                <TextBox x:Name="txtBuscar"
+                         Text="{Binding Buscar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="13"
+                         FontWeight="Medium"
+                         FontFamily="Montserrat"
+                         Foreground="White"
+                         CaretBrush="LightGray"
+                         BorderBrush="DarkGray"
+                         BorderThickness="0,0,0,1"
+                         Height="28"
+                         VerticalContentAlignment="Center"
+                         Padding="20,0,0,0"
+                         CharacterCasing="Upper">
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/magnifier.png"
+                                    Stretch="None"
+                                    AlignmentX="Left" />
+                    </TextBox.Background>
+                </TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="4"
+                        Grid.Column="2">
+                <Button x:Name="btnBuscar"
+                        Command="{Binding BuscarEquipoCommand}"
+                        BorderThickness="0"
+                        Content="BUSCAR"
+                        Foreground="White"
+                        FontSize="16"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Margin="0,1,0,0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background"
+                                    Value="#462ad8" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver"
+                                         Value="True">
+                                    <Setter Property="Background"
+                                            Value="#28aeed" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="150"
+                                    Height="40"
+                                    CornerRadius="20"
+                                    Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="5"
+                        Grid.ColumnSpan="3">
+                <DataGrid ItemsSource="{Binding EquipoList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"
+                                            Binding="{Binding PK_TBL_INVE_EQUIPO}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="ID Sistema"
+                                            Binding="{Binding ID_SISTEMA}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Tipo de equipo"
+                                            Binding="{Binding TIPO_EQUIPO}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Marca"
+                                            Binding="{Binding MARCA}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Serie"
+                                            Binding="{Binding SERIE}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Modelo"
+                                            Binding="{Binding MODELO}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Estado"
+                                            Binding="{Binding ESTADO}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Activo"
+                                            Binding="{Binding ACTIVO}"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Detalles"
+                                            Binding="{Binding DETALLES}"
+                                            Width="*" />
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Editar"
+                                            Command="{Binding DataContext.PruebaCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type DataGridCell}}}">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Background"
+                                                        Value="#462ad8" />
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver"
+                                                             Value="True">
+                                                        <Setter Property="Background"
+                                                                Value="#28aeed" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Eliminar"
+                                            Command="{Binding DataContext.Prueba2Command, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                            CommandParameter="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type DataGridCell}}}">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Background"
+                                                        Value="#462ad8" />
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver"
+                                                             Value="True">
+                                                        <Setter Property="Background"
+                                                                Value="#28aeed" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background"
+                                    Value="{StaticResource panelActiveColor}" />
+                            <Setter Property="Foreground"
+                                    Value="White" />
+                            <Setter Property="FontWeight"
+                                    Value="Medium" />
+                            <Setter Property="FontSize"
+                                    Value="14" />
+                        </Style>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Setter Property="Background"
+                                    Value="{StaticResource panelColor}" />
+                            <Setter Property="Foreground"
+                                    Value="White" />
+                            <Setter Property="FontWeight"
+                                    Value="Medium" />
+                            <Setter Property="FontSize"
+                                    Value="15" />
+                        </Style>
+                    </DataGrid.Resources>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

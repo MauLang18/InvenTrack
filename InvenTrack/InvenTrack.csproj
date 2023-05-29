@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\icon.ico</ApplicationIcon>
+    <Title>InvenTrack</Title>
+    <Authors>Maurice Lang</Authors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\back-image.jpg" />
+    <None Remove="Images\inventory.png" />
+    <None Remove="Images\key.png" />
+    <None Remove="Images\magnifier.png" />
+    <None Remove="Images\user.png" />
+    <None Remove="Images\write.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FontAwesome.Sharp" Version="6.3.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\back-image.jpg" />
+    <Resource Include="Images\inventory.png" />
+    <Resource Include="Images\key.png" />
+    <Resource Include="Images\magnifier.png" />
+    <Resource Include="Images\user.png" />
+    <Resource Include="Images\write.png" />
+  </ItemGroup>
+
+</Project>
