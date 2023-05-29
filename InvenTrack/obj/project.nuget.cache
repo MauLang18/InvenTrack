@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q2WYT2CtLF0tNqpDsWLfSaiF5LFQ8jRu4CRM9Vee9xmcwCVDgfjOr+plu6kZJGbclAXglAfVDbdgOPXAKx7FoQ==",
+  "dgSpecHash": "QDidwDLdUbnJ5PnJTCTsMsFawzh9yT7EoTeEPg9MCx9uN/zeYRzdZWd2avz8XUxsf0KFRx2sAKHXMnN5Du0rrw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\InvenTrack.csproj",
+  "projectFilePath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\InvenTrack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mlang\\.nuget\\packages\\fontawesome.sharp\\6.3.0\\fontawesome.sharp.6.3.0.nupkg.sha512",
     "C:\\Users\\mlang\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

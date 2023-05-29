@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\InvenTrack.csproj": {}
+    "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\InvenTrack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\InvenTrack.csproj": {
+    "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\InvenTrack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\InvenTrack.csproj",
+        "projectUniqueName": "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\InvenTrack.csproj",
         "projectName": "InvenTrack",
-        "projectPath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\InvenTrack.csproj",
+        "projectPath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\InvenTrack.csproj",
         "packagesPath": "C:\\Users\\mlang\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Codigos\\InvenTrack\\obj\\",
+        "outputPath": "C:\\Users\\mlang\\OneDrive\\Desktop\\Nueva carpeta\\InvenTrack\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

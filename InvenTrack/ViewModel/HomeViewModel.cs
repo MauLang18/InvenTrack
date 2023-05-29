@@ -223,7 +223,6 @@ namespace InvenTrack.ViewModel
         }
 
         public ICommand PruebaCommand { get; }
-        public ICommand Prueba2Command { get; }
         public ICommand AgregarEquipoCommand { get; }
         public ICommand ModificarEquipoCommand { get; }
         public ICommand EliminarEquipoCommand { get; }
@@ -234,7 +233,6 @@ namespace InvenTrack.ViewModel
             equipoRepository = new EquipoRepository();
 
             PruebaCommand = new CommandViewModel(ExecutePruebaCommand);
-            Prueba2Command = new CommandViewModel(ExecutePrueba2Command);
             AgregarEquipoCommand = new CommandViewModel(ExecuteAgregarEquipoCommand, CanExecuteAgregarEquipoCommand);
             ModificarEquipoCommand = new CommandViewModel(ExecuteModificarEquipoCommand, CanExecuteModifcarCommand);
             EliminarEquipoCommand = new CommandViewModel(ExecuteEliminarEquipoCommand);
@@ -275,26 +273,6 @@ namespace InvenTrack.ViewModel
             }
         }
 
-        private void ExecutePrueba2Command(object obj)
-        {
-            var cell = obj as DataGridCell;
-            var dat = cell.DataContext as EquipoModel;
-            if (cell != null)
-            {
-                Id = dat.PK_TBL_INVE_EQUIPO;
-                IdSistema = dat.ID_SISTEMA;
-                TipoEquipo = dat.TIPO_EQUIPO;
-                Marca = dat.MARCA;
-                Serie = dat.SERIE;
-                Modelo = dat.MODELO;
-                Detalles = dat.DETALLES;
-                Activo = dat.ACTIVO;
-                IsVisibleGuardar = false;
-                IsVisibleEditar = false;
-                IsVisibleEliminar = true;
-            }
-        }
-
         public void LoadData()
         {
             var parametros = new EquipoModel();
@@ -323,28 +301,42 @@ namespace InvenTrack.ViewModel
 
         private void ExecuteEliminarEquipoCommand(object obj)
         {
-            var parametros = new EquipoModel();
-            parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
-            parametros.PK_TBL_INVE_EQUIPO = Id;
-            parametros.ID_SISTEMA = IdSistema;
-            parametros.TIPO_EQUIPO = TipoEquipo;
-            parametros.MARCA = Marca;
-            parametros.SERIE = Serie;
-            parametros.MODELO = Modelo;
-            parametros.ESTADO = Estado;
-            parametros.DETALLES = Detalles;
-            parametros.ACTIVO = Activo;
+            var cell = obj as DataGridCell;
+            var dat = cell.DataContext as EquipoModel;
+            if (cell != null)
+            {
+                Id = dat.PK_TBL_INVE_EQUIPO;
+                IdSistema = dat.ID_SISTEMA;
+                TipoEquipo = dat.TIPO_EQUIPO;
+                Marca = dat.MARCA;
+                Serie = dat.SERIE;
+                Modelo = dat.MODELO;
+                Detalles = dat.DETALLES;
+                Activo = dat.ACTIVO;
 
-            var eliminado = equipoRepository.Remove(parametros);
-            if (eliminado)
-            {
-                LoadData();
-                MessageBox.Show("El equipo ha sido eliminado con exito");
-                Limpiar();
-            }
-            else
-            {
-                MessageBox.Show("El equipo no se pudo eliminar");
+                var parametros = new EquipoModel();
+                parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
+                parametros.PK_TBL_INVE_EQUIPO = Id;
+                parametros.ID_SISTEMA = IdSistema;
+                parametros.TIPO_EQUIPO = TipoEquipo;
+                parametros.MARCA = Marca;
+                parametros.SERIE = Serie;
+                parametros.MODELO = Modelo;
+                parametros.ESTADO = Estado;
+                parametros.DETALLES = Detalles;
+                parametros.ACTIVO = Activo;
+
+                var eliminado = equipoRepository.Remove(parametros);
+                if (eliminado)
+                {
+                    LoadData();
+                    MessageBox.Show("El equipo ha sido eliminado con exito");
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("El equipo no se pudo eliminar");
+                }
             }
         }
 
