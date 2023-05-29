@@ -97,7 +97,7 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="Eliminar"
-                                            Command="{Binding DataContext.Prueba2Command, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                            Command="{Binding DataContext.EliminarBoletaCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                             CommandParameter="{Binding Path=., RelativeSource={RelativeSource AncestorType={x:Type DataGridCell}}}">
                                         <Button.Style>
                                             <Style TargetType="Button">
@@ -789,44 +789,6 @@
                         Cursor="Hand"
                         Margin="0,5,0,0"
                         Visibility="{Binding IsVisibleModificar, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background"
-                                    Value="#462ad8" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver"
-                                         Value="True">
-                                    <Setter Property="Background"
-                                            Value="#28aeed" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="150"
-                                    Height="40"
-                                    CornerRadius="20"
-                                    Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                                  HorizontalAlignment="Center" />
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="5"
-                        Grid.Column="2">
-                <Button x:Name="btnEliminar"
-                        Command="{Binding EliminarBoletaCommand}"
-                        BorderThickness="0"
-                        Content="ELIMINAR"
-                        Foreground="White"
-                        FontSize="16"
-                        FontFamily="Montserrat"
-                        Cursor="Hand"
-                        Margin="0,5,0,0"
-                        Visibility="{Binding IsVisibleEliminar, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background"

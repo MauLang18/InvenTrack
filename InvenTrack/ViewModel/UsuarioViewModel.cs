@@ -154,7 +154,6 @@ namespace InvenTrack.ViewModel
         }
 
         public ICommand PruebaCommand { get; }
-        public ICommand Prueba2Command { get; }
         public ICommand AgregarUsuarioCommand { get; }
         public ICommand ModificarUsuarioCommand { get; }
         public ICommand EliminarUsuarioCommand { get; }
@@ -164,29 +163,10 @@ namespace InvenTrack.ViewModel
             usuarioRepository = new UserRepository();
 
             PruebaCommand = new CommandViewModel(ExecutePruebaCommand);
-            Prueba2Command = new CommandViewModel(ExecutePrueba2Command);
             AgregarUsuarioCommand = new CommandViewModel(ExecuteAgregarEquipoCommand, CanExecuteAgregarEquipoCommand);
             ModificarUsuarioCommand = new CommandViewModel(ExecuteModificarEquipoCommand, CanExecuteModifcarCommand);
             EliminarUsuarioCommand = new CommandViewModel(ExecuteEliminarEquipoCommand);
             LoadData();
-        }
-
-        private void ExecutePrueba2Command(object obj)
-        {
-            var cell = obj as DataGridCell;
-            var dat = cell.DataContext as UserModel;
-            if (cell != null)
-            {
-                Id = dat.PK_TBL_INVE_USUARIO;
-                Usuario = dat.USUARIO;
-                Contrasena = dat.CONTRASENA;
-                Nombre = dat.NOMBRE;
-                Apellido1 = dat.APELLIDO1;
-                Apellido2 = dat.APELLIDO2;
-                IsVisibleGuardar = false;
-                IsVisibleEditar = false;
-                IsVisibleEliminar = true;
-            }
         }
 
         public void LoadData()
@@ -213,25 +193,37 @@ namespace InvenTrack.ViewModel
 
         private void ExecuteEliminarEquipoCommand(object obj)
         {
-            var parametros = new UserModel();
-            parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
-            parametros.PK_TBL_INVE_USUARIO = Id;
-            parametros.USUARIO = Usuario;
-            parametros.NOMBRE = Nombre;
-            parametros.APELLIDO1 = Apellido1;
-            parametros.APELLIDO2 = Apellido2;
-            parametros.CONTRASENA = Contrasena;
+            var cell = obj as DataGridCell;
+            var dat = cell.DataContext as UserModel;
+            if (cell != null)
+            {
+                Id = dat.PK_TBL_INVE_USUARIO;
+                Usuario = dat.USUARIO;
+                Contrasena = dat.CONTRASENA;
+                Nombre = dat.NOMBRE;
+                Apellido1 = dat.APELLIDO1;
+                Apellido2 = dat.APELLIDO2;
 
-            var eliminado = usuarioRepository.Remove(parametros);
-            if (eliminado)
-            {
-                LoadData();
-                MessageBox.Show("El equipo ha sido eliminado con exito");
-                Limpiar();
-            }
-            else
-            {
-                MessageBox.Show("El equipo no se pudo eliminar");
+                var parametros = new UserModel();
+                parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
+                parametros.PK_TBL_INVE_USUARIO = Id;
+                parametros.USUARIO = Usuario;
+                parametros.NOMBRE = Nombre;
+                parametros.APELLIDO1 = Apellido1;
+                parametros.APELLIDO2 = Apellido2;
+                parametros.CONTRASENA = Contrasena;
+
+                var eliminado = usuarioRepository.Remove(parametros);
+                if (eliminado)
+                {
+                    LoadData();
+                    MessageBox.Show("El usuario ha sido eliminado con exito");
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no se pudo eliminar");
+                }
             }
         }
 
@@ -264,12 +256,12 @@ namespace InvenTrack.ViewModel
             if (modificado)
             {
                 LoadData();
-                MessageBox.Show("El equipo ha sido modificado con exito");
+                MessageBox.Show("El usuario ha sido modificado con exito");
                 Limpiar();
             }
             else
             {
-                MessageBox.Show("El equipo no se pudo modificar");
+                MessageBox.Show("El usuario no se pudo modificar");
             }
         }
 
@@ -302,12 +294,12 @@ namespace InvenTrack.ViewModel
             if (agregado)
             {
                 LoadData();
-                MessageBox.Show("El equipo ha sido agregado con exito");
+                MessageBox.Show("El usuario ha sido agregado con exito");
                 Limpiar();
             }
             else
             {
-                MessageBox.Show("El equipo no se pudo agregar");
+                MessageBox.Show("El usuario no se pudo agregar");
             }
         }
 

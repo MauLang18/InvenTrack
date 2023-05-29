@@ -422,7 +422,6 @@ namespace InvenTrack.ViewModel
         }
 
         public ICommand PruebaCommand { get; }
-        public ICommand Prueba2Command { get; }
         public ICommand Prueba3Command { get; }
         public ICommand CrearBoletaCommand { get; }
         public ICommand CerrarBoletaCommand { get; }
@@ -439,7 +438,6 @@ namespace InvenTrack.ViewModel
             detalleBoletaRepository = new DetalleBoletaRepository();
 
             PruebaCommand = new CommandViewModel(ExecutePruebaCommand);
-            Prueba2Command = new CommandViewModel(ExecutePrueba2Command);
             Prueba3Command = new CommandViewModel(ExecutePrueba3Command);
             CrearBoletaCommand = new CommandViewModel(ExecuteCrearBoletaCommand, CanExecuteCrearBoletaCommand);
             CerrarBoletaCommand = new CommandViewModel(ExecuteCerrarBoletaCommand);
@@ -616,28 +614,8 @@ namespace InvenTrack.ViewModel
             {
                 MessageBox.Show("Error al cargar los equipos: " + ex.Message);
             }
-        }
-
-        private void ExecutePrueba2Command(object obj)
-        {
-            var cell = obj as DataGridCell;
-            var dat = cell.DataContext as BoletaModel;
-            if (cell != null)
-            {
-                Id = dat.PK_TBL_INVE_BOLETA;
-                Ubicacion = dat.UBICACION;
-                Departamento = dat.DEPARTAMENTO;
-                Asignado = dat.ASIGNADO;
-                FechaSeleccionada = dat.FECHA;
-                EntregadoPor = dat.ENTREGADO_POR;
-                RecibidoPor = dat.RECIBIDO_POR;
-                Detalles = dat.DETALLE_MOVIMIENTO;
-                Fecha = FechaSeleccionada.ToString();
-                IsVisibleCrear = false;
-                IsVisibleEliminar = true;
-                IsVisibleModificar = false;
-            }
-        }
+        }   
+        
         private void ExecutePrueba3Command(object obj)
         {
             var cell = obj as DataGridCell;
@@ -713,52 +691,68 @@ namespace InvenTrack.ViewModel
 
         private void ExecuteEliminarBoletaCommand(object obj)
         {
-            var parametros = new BoletaModel();
-            parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
-            parametros.PK_TBL_INVE_BOLETA = Id;
-            parametros.UBICACION = Ubicacion;
-            parametros.DEPARTAMENTO = Departamento;
-            parametros.FECHA = FechaSeleccionada;
-            parametros.ENTREGADO_POR = EntregadoPor;
-            parametros.ASIGNADO = Asignado;
-            parametros.RECIBIDO_POR = RecibidoPor;
-            parametros.DETALLE_MOVIMIENTO = Detalles;
 
-            var eliminado = boletaRepository.Remove(parametros);
-            if (eliminado)
+            var cell = obj as DataGridCell;
+            var dat = cell.DataContext as BoletaModel;
+            if (cell != null)
             {
-                LoadData();
-                MessageBox.Show("La boleta ha sido eliminado con exito");
-                var parm = new EquipoModel();
-                if (EquipoList != null)
+                Id = dat.PK_TBL_INVE_BOLETA;
+                Ubicacion = dat.UBICACION;
+                Departamento = dat.DEPARTAMENTO;
+                Asignado = dat.ASIGNADO;
+                FechaSeleccionada = dat.FECHA;
+                EntregadoPor = dat.ENTREGADO_POR;
+                RecibidoPor = dat.RECIBIDO_POR;
+                Detalles = dat.DETALLE_MOVIMIENTO;
+                Fecha = FechaSeleccionada.ToString();
+
+                var parametros = new BoletaModel();
+                parametros.USUARIO = Thread.CurrentPrincipal.Identity.Name;
+                parametros.PK_TBL_INVE_BOLETA = Id;
+                parametros.UBICACION = Ubicacion;
+                parametros.DEPARTAMENTO = Departamento;
+                parametros.FECHA = FechaSeleccionada;
+                parametros.ENTREGADO_POR = EntregadoPor;
+                parametros.ASIGNADO = Asignado;
+                parametros.RECIBIDO_POR = RecibidoPor;
+                parametros.DETALLE_MOVIMIENTO = Detalles;
+
+                var eliminado = boletaRepository.Remove(parametros);
+                if (eliminado)
                 {
-                    foreach (DetalleBoletaModel deta in EquipoList)
+                    LoadData();
+                    MessageBox.Show("La boleta ha sido eliminado con exito");
+                    var parm = new EquipoModel();
+                    if (EquipoList != null)
                     {
-                        parm.USUARIO = Thread.CurrentPrincipal.Identity.Name;
-                        parm.PK_TBL_INVE_EQUIPO = deta.FK_TBL_INVE_EQUIPO;
-                        parm.ID_SISTEMA = deta.ID_SISTEMA;
-                        parm.TIPO_EQUIPO = deta.TIPO_EQUIPO;
-                        parm.MARCA = deta.MARCA;
-                        parm.SERIE = deta.SERIE;
-                        parm.MODELO = deta.MODELO;
-                        parm.ESTADO = "STOCK";
-                        parm.DETALLES = deta.DETALLES;
-                        equipoRepository.Edit(parm);
+                        foreach (DetalleBoletaModel deta in EquipoList)
+                        {
+                            parm.USUARIO = Thread.CurrentPrincipal.Identity.Name;
+                            parm.PK_TBL_INVE_EQUIPO = deta.FK_TBL_INVE_EQUIPO;
+                            parm.ID_SISTEMA = deta.ID_SISTEMA;
+                            parm.TIPO_EQUIPO = deta.TIPO_EQUIPO;
+                            parm.MARCA = deta.MARCA;
+                            parm.SERIE = deta.SERIE;
+                            parm.MODELO = deta.MODELO;
+                            parm.ESTADO = "STOCK";
+                            parm.DETALLES = deta.DETALLES;
+                            equipoRepository.Edit(parm);
+                        }
+                        CargarEquipos();
                     }
-                    CargarEquipos();
+                    Limpiar();
+                    IsVisibleBoleta = false;
+                    IsVisibleCrear = true;
+                    IsVisibleEquipos = false;
+                    IsVisibleAgregar = false;
+                    IsVisibleModificar = false;
+                    IsVisibleEliminar = false;
+                    IsVisibleCerrar = false;
                 }
-                Limpiar();
-                IsVisibleBoleta = false;
-                IsVisibleCrear = true;
-                IsVisibleEquipos = false;
-                IsVisibleAgregar = false;
-                IsVisibleModificar = false;
-                IsVisibleEliminar = false;
-                IsVisibleCerrar = false;
-            }
-            else
-            {
-                MessageBox.Show("La boleta no se pudo eliminar");
+                else
+                {
+                    MessageBox.Show("La boleta no se pudo eliminar");
+                }
             }
         }
 
