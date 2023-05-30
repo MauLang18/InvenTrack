@@ -39,6 +39,7 @@ namespace InvenTrack.ViewModel
         private string _modeloE;
         private string _estadoE;
         private string _detallesE;
+        private string _activoE;
 
         private List<BoletaModel> _boletaList;
         private List<DetalleBoletaModel> _equipoList;
@@ -82,6 +83,7 @@ namespace InvenTrack.ViewModel
                     ModeloE = value.MODELO;
                     EstadoE = value.ESTADO;
                     DetallesE = value.DETALLES;
+                    ActivoE = value.ACTIVO;
                 }
             }
         }
@@ -401,6 +403,18 @@ namespace InvenTrack.ViewModel
                 OnPropertyChanged(nameof(DetallesE));
             }
         }
+        public string ActivoE
+        {
+            get
+            {
+                return _activoE;
+            }
+            set
+            {
+                _activoE = value;
+                OnPropertyChanged(nameof(ActivoE));
+            }
+        }
 
         public List<BoletaModel> BoletaList
         {
@@ -569,6 +583,7 @@ namespace InvenTrack.ViewModel
                         parm.MODELO = dat.MODELO;
                         parm.ESTADO = "STOCK";
                         parm.DETALLES = dat.DETALLES;
+                        parm.ACTIVO = dat.ACTIVO;
                         equipoRepository.Edit(parm);
                         CargarEquipos();
                         EquipoList = detalleBoletaRepository.GetByAll(parametros);
@@ -736,6 +751,7 @@ namespace InvenTrack.ViewModel
                             parm.MODELO = deta.MODELO;
                             parm.ESTADO = "STOCK";
                             parm.DETALLES = deta.DETALLES;
+                            parm.ACTIVO = deta.ACTIVO;
                             equipoRepository.Edit(parm);
                         }
                         CargarEquipos();
@@ -780,6 +796,7 @@ namespace InvenTrack.ViewModel
                 parm.MODELO = ModeloE;
                 parm.ESTADO = "OCUPADO";
                 parm.DETALLES = DetallesE;
+                parm.ACTIVO = ActivoE;
                 equipoRepository.Edit(parm);
                 CargarEquipos();
             }

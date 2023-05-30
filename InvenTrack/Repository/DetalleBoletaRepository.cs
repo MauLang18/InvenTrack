@@ -111,7 +111,7 @@ namespace InvenTrack.Repository
                 cmd.Parameters.AddWithValue("@P_USUARIO", detalleBoletaModel.USUARIO);
                 cmd.Parameters.AddWithValue("@P_MODO_EJECUCION", 0);
                 cmd.Parameters.AddWithValue("@P_OPCION ", 0);
-                cmd.Parameters.AddWithValue("@P_PK_TBL_INVE_DETALLE_BOLETA ", detalleBoletaModel.PK_TBL_INVE_DETALLE_BOLETA);
+                cmd.Parameters.AddWithValue("@P_PK_TBL_INVE_DETALLE_BOLETA ", 0);
                 cmd.Parameters.AddWithValue("@P_FK_TBL_INVE_BOLETA  ", detalleBoletaModel.FK_TBL_INVE_BOLETA);
 
                 myConexion.Open();
@@ -131,6 +131,7 @@ namespace InvenTrack.Repository
                     obj.SERIE = UtilitarioDatos.ObtieneString(reader, "SERIE");
                     obj.MODELO = UtilitarioDatos.ObtieneString(reader, "MODELO");
                     obj.DETALLES = UtilitarioDatos.ObtieneString(reader, "DETALLES");
+                    obj.ACTIVO = UtilitarioDatos.ObtieneString(reader, "ACTIVO");
 
                     lista.Add(obj);
                 }

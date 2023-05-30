@@ -18,5 +18,6 @@ namespace InvenTrack.Model
         public string SERIE { get; set; }
         public string MODELO { get; set; }
         public string DETALLES { get; set; }
+        public string ACTIVO { get; set; }
     }
 }

@@ -456,7 +456,7 @@
             </Grid>
             <StackPanel Grid.Row="1"
                         Grid.ColumnSpan="2">
-                <TextBlock Text="BUSCAR"
+                <TextBlock Text="BUSCAR BOLETA"
                            Foreground="DarkGray"
                            FontSize="12"
                            FontWeight="Medium"
@@ -469,7 +469,7 @@
                          Foreground="White"
                          CaretBrush="LightGray"
                          BorderBrush="DarkGray"
-                         BorderThickness="0,0,0,1"
+                         BorderThickness="3"
                          Height="28"
                          VerticalContentAlignment="Center"
                          Padding="20,0,0,0"
@@ -725,7 +725,10 @@
                           Height="28"
                           VerticalContentAlignment="Center"
                           Margin="0,10,0,0"
-                          Padding="20,0,0,0">
+                          Padding="20,0,0,0"
+                          IsEditable="True"
+                          IsTextSearchEnabled="True"
+                          TextSearch.TextPath="ID_SISTEMA">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -737,6 +740,7 @@
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
+                    
                 </ComboBox>
             </StackPanel>
             <StackPanel Grid.Row="5"

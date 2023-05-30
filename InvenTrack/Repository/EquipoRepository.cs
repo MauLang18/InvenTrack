@@ -121,7 +121,23 @@ namespace InvenTrack.Repository
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error en Base de Datos al modificar el equipo \n" + ex.Message);
+                if (ex.Message.Contains("UNIQUE KEY"))
+                {
+                    // Manejar el error de UNIQUE constraint aquí
+                    Console.WriteLine("No se puede agregar el equipo debido a una restricción UNIQUE.");
+                    Console.WriteLine("Por favor, verifique los datos ingresados.");
+
+                    // Puedes mostrar un mensaje de error al usuario en la interfaz de usuario, 
+                    // o realizar cualquier otra acción necesaria para manejar el error.
+
+                    // Opcionalmente, puedes registrar el error en un archivo de registro o notificar al administrador del sistema.
+                }
+                else
+                {
+                    // Otros errores de base de datos que no son relacionados con UNIQUE constraint
+                    throw new ApplicationException("Error en Base de Datos al agregar el equipo \n" + ex.Message);
+                }
+                return modificado = false;
             }
         }
 
